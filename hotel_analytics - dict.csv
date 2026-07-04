@@ -1,0 +1,24 @@
+ ,,,,,
+Nome Coluna,Descrição,,,alimentacao,significado
+reserva_cancelada,1 = reserva cancelada | 0 = reserva mantida,,,BB,Café da Manhã (Bed and Breakfast)
+tempo_antecedencia,Número de dias de antecedência da reserva frente ao dia de check-in,,,FB,Alimentação livre (Full Board)
+data_chegada,Data da chegada no hotel,,,HB,Café da Manhã + Outra refeição (Half Board)
+ano_chegada,Ano da chegada no hotel,,,SC,Sem alimentação
+mes_chegada,Mês da chegada no hotel,,,Undefined,Sem alimentação
+diadomes_chegada,Dia do mês da chegada no hotel,,,,
+nro_noites_fds,Números de noites de FDS de estadia (# Sábados ou Domingos),,,segmento_mercado,significado
+nro_noites_dds,Números de noites de DDS de estadia (# Seg - Sex),,,Corporativo,Corporativo
+adultos,Número de adultos na reserva,,,Direta,Compra direta
+criancas,Número de crianças na reserva,,,Grupos,Grupos de compra
+bebes,Número de bebês na reserva,,,AT Offline,Agência de Turismo Offline
+alimentacao,Tipo de alimentação escolhida (VER DESCRIÇÃO AO LADO),,,AT Online,Agência de Turismo Online
+país,Sigla do país de origem do cliente,,,,
+segmento_mercado,Tipo de canal de venda (VER DESCRIÇÃO AO LADO),,,tipo_pgto,significado
+cliente_recorrente,Fidelidade do cliente. 1 = cliente já reservou antes,,,Sem pgto,Nenhum pagamento adiantado foi feito
+tipo_quarto,Tipo de acomodação (de A até P),,,Pgto não reembolsável,Depósito não-reembolsável no valor total da estadia foi feito
+tipo_pgto,"Tipo de pagamento adiantado (""sinal"") para confirmar reserva (VER DESCRIÇÃO AO LADO)",,,Pgto reembolsável,Depósito reembolsável no valor parcial da estadia foi feito
+agencia_turismo,ID da agência de turismo que agendou a estadia,,,,
+receita_por_noite,Receita média por noite de estadia,,,status_reserva,significado
+pedidos_especiais,"Pedidos ""especiais"" para a acomodação (Ex: Andar alto)",,,Confirmada,Reserva confirmada. Check-in e check-out feitos
+status_reserva,Status da reserva (VER DESCRIÇÃO AO LADO),,,Cancelada,Reserva cancelada com antecedência
+data_status_reserva,Data em que o status da reserva (reservation_status) foi atualizado,,,Ausente,"Reserva cancelada no dia da chegada, cliente não compareceu e não informou ao hotel o motivo"
