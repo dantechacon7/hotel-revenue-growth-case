@@ -174,3 +174,17 @@ ROUND(AVG(total_noites),2)
 FROM fct_hotel_reservations
 WHERE reserva_cancelada=0
 GROUP BY 1,2 ORDER BY 1""").df()
+
+# entendendo o efeito do plano alimentar + pedidos especiais no engajamento
+con.sql("""
+SELECT 
+alimentacao, 
+pedidos_especiais, 
+COUNT(*) n,
+ROUND(AVG(receita_por_noite),2) adr,
+ROUND(AVG(total_noites),2) noites,
+ROUND(AVG(reserva_cancelada)*100,2) pct_canc
+FROM fct_hotel_reservations
+GROUP BY 1,2 
+ORDER BY 1,2
+""").df()
