@@ -1,176 +1,226 @@
 # Hotel Revenue Growth Strategy
 
-Business Analytics case focused on identifying commercial opportunities to increase hotel revenue by 20% using historical booking data.
+> End-to-end Business Analytics case using SQL, DuckDB and Python to identify nearly **R$1M** in annual revenue opportunities through cancellation reduction, pricing optimization and customer retention.
+
+[🇧🇷 Read in Portuguese](README.pt-BR.md)
+
+---
 
 ## Overview
 
-This project analyzes nearly 40,000 hotel reservations (2015–2017) to identify the main revenue drivers, quantify revenue leakage and propose prioritized business initiatives.
+This repository presents a Business Analytics case study based on historical hotel reservation data (2015–2017).
 
-Instead of focusing only on descriptive analytics, this case aims to answer:
+The objective was to identify the main revenue drivers and propose commercially viable initiatives capable of increasing annual revenue by approximately **20%**.
 
-> How can a hotel increase annual revenue by 20% using data-driven business decisions?
+Unlike a traditional exploratory analysis, this project focuses on translating data into business decisions by combining SQL analysis, hypothesis validation and financial impact estimation.
 
 ---
 
-## Business Goal
+## Business Problem
 
 Current Revenue
 
-R$ 4.97M
+**R$ 4.97M**
 
 Target Revenue (+20%)
 
-R$ 5.96M
+**R$ 5.96M**
 
-Gap to Close
+Revenue Gap
 
-≈ R$ 994K
+**≈ R$994K**
 
----
+The project investigates three strategic questions:
 
-## Main Business Questions
-
-- Where is revenue being lost?
-- Which customer segments are more valuable?
-- Which booking channels generate higher profitability?
-- Which room categories should be prioritized?
-- How can cancellations be reduced?
-- Which initiatives provide the highest business impact?
+- Where is revenue currently being lost?
+- Which customer segments generate the highest value?
+- Which initiatives should be prioritized according to impact and implementation effort?
 
 ---
 
 ## Dataset
 
-- ~39,800 hotel reservations
-- Period: 2015–2017
-- Multiple customer, booking and commercial attributes
-- SQL analysis performed using DuckDB
+Historical hotel reservation dataset.
+
+| Metric | Value |
+|---------|-------:|
+| Reservations | 39,859 |
+| Period | 2015–2017 |
+| Cancellation Rate | 27.82% |
+| Revenue | R$4.97M |
+
+Main attributes include:
+
+- Booking channel
+- Lead time
+- Customer type
+- Country
+- Room category
+- ADR
+- Stay duration
+- Deposit type
+- Special requests
+- Reservation status
 
 ---
 
 ## Tech Stack
 
 - Python
-- DuckDB
 - SQL
+- DuckDB
 - Pandas
 - Matplotlib
 - Google Colab
 
 ---
 
-## Project Structure
+## Repository Structure
 
 ```
-data/
-notebooks/
-sql/
-images/
-docs/
-src/
+hotel-revenue-growth-case/
+
+README.md
+README.pt-BR.md
+
+config.py
+
+01_data_exploration.py
+02_revenue_diagnosis.py
+03_customer_engagement_analysis.py
+04_business_recommendations.py
+```
+
+---
+
+## Project Workflow
+
+```
+Business Problem
+
+↓
+
+Exploratory Data Analysis
+
+↓
+
+Business Hypotheses
+
+↓
+
+SQL Validation
+
+↓
+
+Business Insights
+
+↓
+
+Strategic Recommendations
+
+↓
+
+Estimated Financial Impact
 ```
 
 ---
 
 ## Analysis Performed
 
-### Revenue Overview
+### Revenue Diagnosis
 
-- Total Revenue
-- Lost Revenue
-- Cancellation Rate
-- ADR
-- Average Stay
+- Revenue decomposition
+- Lost revenue estimation
+- ADR analysis
+- Average stay
 
 ### Cancellation Analysis
 
-- Lead Time
-- Payment Type
-- Booking Channel
-- Customer Type
-
-### Commercial Analysis
-
-- Market Segments
-- Room Categories
-- Customer Loyalty
-- Seasonality
-- Upsell Opportunities
+- Lead time
+- Booking channels
+- Deposit policy
+- Customer profile
 
 ### Customer Analysis
 
-- Repeat Customers
-- Weekend vs Weekday Guests
-- Special Requests
+- Repeat customers
+- Special requests
+- Customer engagement
+
+### Commercial Analysis
+
+- Room categories
+- Seasonality
+- Direct vs OTA channels
 
 ---
 
 ## Key Findings
 
-### 1. Cancellations
+### Revenue Leakage
 
-27.8% of all reservations were cancelled.
+- 27.82% cancellation rate
+- R$3.25M in lost revenue
 
-≈ R$3.25M in potential revenue was lost.
+### Long Lead Time
 
----
+Reservations made over 90 days in advance represent the majority of lost revenue.
 
-### 2. Lead Time
+### Direct Channel
 
-Bookings made over 90 days in advance account for the majority of lost revenue.
+Lowest cancellation rate and highest estimated net profitability.
 
----
+### Repeat Customers
 
-### 3. Direct Channel
+Only 4.4% of customers are repeat guests, yet they cancel 4.5× less than first-time guests.
 
-Direct bookings show:
+### Premium Rooms
 
-- lower cancellation
-- competitive ADR
-- higher net margin
+Premium rooms generate substantially higher ADR while representing a very small share of reservations.
 
----
+### Customer Engagement
 
-### 4. Repeat Customers
-
-Repeat guests cancel 4.5x less than first-time guests.
-
----
-
-### 5. Room Mix
-
-Premium rooms represent a very small share of bookings despite much higher ADR.
+Each additional special request correlates with higher ADR and longer stays.
 
 ---
 
 ## Business Recommendations
 
-- Deposit policy for long lead-time bookings
-- Pre-arrival room upgrades
-- CRM retention campaigns
-- Direct booking strategy
-- Low-season packages
-- Loyalty program
-- Corporate agreements
+| Initiative | Estimated Impact |
+|------------|----------------:|
+| Deposit policy | R$200K |
+| Pre-arrival upsell | R$180K |
+| CRM retention campaigns | R$100K |
+| Direct booking strategy | R$150K |
+| Low season packages | R$100K |
+| Loyalty program | R$80K |
+| Corporate agreements | R$60K |
 
-Estimated impact:
+Estimated opportunity:
 
-≈ R$870K recovered revenue
+**≈ R$870K**
+
+Equivalent to approximately **87%** of the target revenue increase.
 
 ---
 
-## Repository Contents
+## Future Improvements
 
-- Complete notebook
-- SQL queries
-- Business report
-- Visualizations
-- Documentation
+Potential future developments include:
+
+- Dynamic pricing simulation
+- Cancellation prediction model
+- Customer Lifetime Value
+- Recommendation engine
+- Interactive dashboard
+- Revenue forecasting
 
 ---
 
 ## Author
 
-Dante Costa
+**Dante Costa**
 
-Senior Data Analyst | Business Analytics | SQL | Data Strategy
+Senior Data Analyst
+
+Business Analytics • SQL • Data Strategy • Business Architecture
