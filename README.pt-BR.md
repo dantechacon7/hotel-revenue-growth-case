@@ -1,6 +1,6 @@
 # Estratégia de Crescimento de Receita para Hotel
 
-> Case de Business Analytics utilizando SQL, DuckDB e Python para identificar aproximadamente **R$870 mil** em oportunidades anuais de crescimento de receita por meio da redução de cancelamentos, otimização do ADR e retenção de clientes.
+> Case de Business Analytics utilizando SQL, DuckDB e Python para identificar aproximadamente **R$1,05 milhão** em oportunidades anuais de crescimento de receita por meio da redução de cancelamentos, otimização de ADR e retenção de clientes.
 
 [🇺🇸 English Version](README.md)
 
@@ -8,70 +8,42 @@
 
 ## Sobre o projeto
 
-Este repositório apresenta um case de Business Analytics desenvolvido a partir de uma base histórica de reservas de hotel entre 2015 e 2017.
-
-O objetivo foi identificar as principais alavancas de receita do negócio e propor iniciativas comercialmente viáveis capazes de aumentar a receita anual em aproximadamente **20%**.
-
-Mais do que uma análise exploratória, este projeto demonstra como transformar dados em decisões estratégicas por meio da construção e validação de hipóteses de negócio.
+Case de Business Analytics desenvolvido a partir de uma base histórica de reservas de hotel entre 2015 e 2017. O objetivo foi identificar as principais alavancas de receita e propor iniciativas capazes de aumentar a receita anual em aproximadamente **20%**.
 
 ---
 
 ## Problema de negócio
 
-Receita atual
-
-**R$4,97 milhões**
-
-Meta
-
-**R$5,96 milhões**
-
-Gap de crescimento
-
-**≈ R$994 mil**
-
-O projeto responde às seguintes perguntas:
+| | |
+|---|---|
+| Receita atual | **R$11,60 milhões** |
+| Meta (+20%) | **R$13,92 milhões** |
+| Gap de crescimento | **≈ R$2,32 milhões** |
 
 - Onde o hotel está perdendo receita?
 - Quais clientes geram maior valor?
-- Quais iniciativas devem ser priorizadas considerando impacto e esforço?
+- Quais iniciativas priorizar considerando impacto e esforço?
 
 ---
 
 ## Base de dados
 
-Reservas históricas de hotel.
-
 | Métrica | Valor |
-|---------|-------:|
+|---------|------:|
 | Reservas | 39.859 |
 | Período | 2015–2017 |
-| Cancelamentos | 27,82% |
-| Receita | R$4,97 milhões |
+| Taxa de cancelamento | 27,82% |
+| Receita realizada | R$11,60M |
+| Receita perdida (cancelamentos) | R$5,84M |
+| Diária média (ADR) | R$91,29 |
 
-A base contém informações como:
-
-- Canal de reserva
-- Antecedência
-- Tipo de cliente
-- País de origem
-- Categoria do quarto
-- ADR
-- Duração da estadia
-- Tipo de depósito
-- Pedidos especiais
-- Status da reserva
+Atributos: canal de reserva, antecedência, tipo de cliente, país, categoria do quarto, ADR, duração da estadia, tipo de depósito, pedidos especiais, status da reserva.
 
 ---
 
 ## Tecnologias
 
-- Python
-- SQL
-- DuckDB
-- Pandas
-- Matplotlib
-- Google Colab
+Python · SQL · DuckDB · Pandas · Matplotlib · Google Colab
 
 ---
 
@@ -79,112 +51,62 @@ A base contém informações como:
 
 ```
 hotel-revenue-growth-case/
-
-README.md
-README.pt-BR.md
-
-config.py
-
-01_data_exploration.py
-02_revenue_diagnosis.py
-03_customer_engagement_analysis.py
-04_business_recommendations.py
+├── README.md
+├── README.pt-BR.md
+├── config.py
+├── 01_data_exploration.py
+├── 02_revenue_diagnosis.py
+├── 03_customer_engagement_analysis.py
+├── 04_business_recommendations.py
+└── gold_analytics_fct_hotel_reservations.ipynb
 ```
-
----
-
-## Fluxo do projeto
-
-```
-Problema de Negócio
-
-↓
-
-Análise Exploratória
-
-↓
-
-Hipóteses
-
-↓
-
-Validação em SQL
-
-↓
-
-Insights
-
-↓
-
-Recomendações
-
-↓
-
-Estimativa de Impacto Financeiro
-```
-
----
-
-## Principais análises
-
-- Diagnóstico de receita
-- Análise de cancelamentos
-- Performance dos canais de reserva
-- Perfil dos clientes
-- Clientes recorrentes
-- Categorias de quarto
-- Sazonalidade
-- Engajamento por pedidos especiais
 
 ---
 
 ## Principais insights
 
-- 27,82% das reservas foram canceladas.
-- Aproximadamente R$3,25 milhões em receita potencial foram perdidos.
-- Reservas com mais de 90 dias de antecedência concentram a maior parte das perdas.
-- O canal direto apresenta menor cancelamento e maior margem líquida.
-- Clientes recorrentes cancelam 4,5 vezes menos.
-- Quartos premium possuem ADR muito superior, porém baixa participação nas reservas.
-- Clientes mais engajados apresentam maior ADR e estadias mais longas.
+**Cancelamento:** 27,82% das reservas canceladas → R$5,84M perdidos. Reservas com 90+ dias de antecedência: 40% do volume, 64% da receita perdida. Sem custo de cancelamento, o hóspede reserva sem compromisso real.
+
+**Canal Direto:** Menor cancelamento (13,48%), ADR R$111,67, sem comissão OTA. Melhor canal por receita líquida por reserva iniciada.
+
+**Anomalia no pgto não reembolsável:** 96% de cancelamento — concentrado em grupos portugueses. Assimetria cambial euro/real torna o depósito em reais uma barreira irrisória.
+
+**Clientes recorrentes:** 4,4% da base, cancelam 4,5× menos. Recorrentes de FDS atingem ADR R$155–222 com ~6 noites em meses de pico.
+
+**Engajamento:** Cada pedido especial adicional = +R$20–30 ADR, +0,3 noites, independente de sazonalidade. HB + 3 pedidos: R$168 ADR, 9% cancelamento. FB + 3 pedidos: 0% cancelamento.
 
 ---
 
 ## Recomendações
 
-| Iniciativa | Impacto Estimado |
-|------------|----------------:|
-| Política de depósito | R$200 mil |
-| Upsell pré-chegada | R$180 mil |
-| Campanhas de retenção | R$100 mil |
-| Estratégia de canal direto | R$150 mil |
-| Pacotes de baixa temporada | R$100 mil |
-| Programa de fidelidade | R$80 mil |
-| Contratos corporativos | R$60 mil |
+| # | Iniciativa | Impacto Est. | Esforço | Prazo |
+|---|-----------|-------------:|---------|-------|
+| 1 | Política de depósito >30 dias (exceto Grupos) | ~R$380k | Baixo | Imediato |
+| 2 | Upsell pré-chegada (quarto + alimentação + engajamento) | ~R$180k | Baixo | Imediato |
+| | **Subtotal imediato** | **~R$560k (24%)** | | |
+| 3 | Gestão de demanda (retenção + baixa temporada) | ~R$200k | Médio | 1–2 meses |
+| 4 | Migração canal Direto | ~R$150k | Médio | 3–6 meses |
+| | **Subtotal curto/médio prazo** | **~R$910k (39%)** | | |
+| 5 | Retenção e fidelização (fidelidade + corporativo) | ~R$140k | Médio/Alto | 3–12 meses |
+| | **Total acumulado** | **~R$1,05M (45%)** | | |
 
-Impacto potencial total:
+Atingir 100% da meta exige alavancas fora do escopo dos dados: precificação dinâmica, novos mercados ou expansão de capacidade.
 
-**≈ R$870 mil**
+---
 
-Representando aproximadamente **87%** da meta de crescimento proposta.
+## Nota metodológica
+
+**Bug de receita (corrigido):** O dataset original usa vírgula como separador decimal em `receita_por_noite`. Sessões anteriores subestimavam a receita em ~2,34×. Correção: `str.replace(',', '.')` antes do cast para float. Ver `config.py`.
 
 ---
 
 ## Próximos passos
 
-- Modelo preditivo de cancelamento
-- Simulação de precificação dinâmica
-- Customer Lifetime Value (CLV)
-- Dashboard interativo
-- Previsão de receita
-- Sistema de recomendação de upgrades
+Modelo preditivo de cancelamento · Simulação de precificação dinâmica · Customer Lifetime Value · Dashboard interativo
 
 ---
 
 ## Autor
 
-**Dante Costa**
-
-Senior Data Analyst
-
-Business Analytics • SQL • Data Strategy • Business Architecture
+**Dante Costa** — Senior Data Analyst
+Business Analytics · SQL · Data Strategy · Business Architecture
