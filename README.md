@@ -1,6 +1,6 @@
 # Hotel Revenue Growth Strategy
 
-> End-to-end Business Analytics case using SQL, DuckDB and Python to identify nearly **R$1M** in annual revenue opportunities through cancellation reduction, pricing optimization and customer retention.
+> End-to-end Business Analytics case using SQL, DuckDB and Python to identify **R$1M+** in annual revenue opportunities through cancellation reduction, pricing optimization and customer retention.
 
 [🇧🇷 Read in Portuguese](README.pt-BR.md)
 
@@ -8,29 +8,17 @@
 
 ## Overview
 
-This repository presents a Business Analytics case study based on historical hotel reservation data (2015–2017).
-
-The objective was to identify the main revenue drivers and propose commercially viable initiatives capable of increasing annual revenue by approximately **20%**.
-
-Unlike a traditional exploratory analysis, this project focuses on translating data into business decisions by combining SQL analysis, hypothesis validation and financial impact estimation.
+This repository presents a Business Analytics case study based on historical hotel reservation data (2015–2017). The objective was to identify the main revenue drivers and propose commercially viable initiatives capable of increasing annual revenue by approximately **20%**.
 
 ---
 
 ## Business Problem
 
-Current Revenue
-
-**R$ 4.97M**
-
-Target Revenue (+20%)
-
-**R$ 5.96M**
-
-Revenue Gap
-
-**≈ R$994K**
-
-The project investigates three strategic questions:
+| | |
+|---|---|
+| Current Revenue | **R$11.60M** |
+| Target Revenue (+20%) | **R$13.92M** |
+| Revenue Gap | **≈ R$2.32M** |
 
 - Where is revenue currently being lost?
 - Which customer segments generate the highest value?
@@ -40,38 +28,22 @@ The project investigates three strategic questions:
 
 ## Dataset
 
-Historical hotel reservation dataset.
-
 | Metric | Value |
-|---------|-------:|
+|--------|------:|
 | Reservations | 39,859 |
 | Period | 2015–2017 |
 | Cancellation Rate | 27.82% |
-| Revenue | R$4.97M |
+| Realized Revenue | R$11.60M |
+| Lost Revenue (cancellations) | R$5.84M |
+| Average Daily Rate | R$91.29 |
 
-Main attributes include:
-
-- Booking channel
-- Lead time
-- Customer type
-- Country
-- Room category
-- ADR
-- Stay duration
-- Deposit type
-- Special requests
-- Reservation status
+Main attributes: booking channel, lead time, customer type, country, room category, ADR, stay duration, deposit type, special requests, reservation status.
 
 ---
 
 ## Tech Stack
 
-- Python
-- SQL
-- DuckDB
-- Pandas
-- Matplotlib
-- Google Colab
+Python · SQL · DuckDB · Pandas · Matplotlib · Google Colab
 
 ---
 
@@ -79,148 +51,62 @@ Main attributes include:
 
 ```
 hotel-revenue-growth-case/
-
-README.md
-README.pt-BR.md
-
-config.py
-
-01_data_exploration.py
-02_revenue_diagnosis.py
-03_customer_engagement_analysis.py
-04_business_recommendations.py
+├── README.md
+├── README.pt-BR.md
+├── config.py
+├── 01_data_exploration.py
+├── 02_revenue_diagnosis.py
+├── 03_customer_engagement_analysis.py
+├── 04_business_recommendations.py
+└── gold_analytics_fct_hotel_reservations.ipynb
 ```
-
----
-
-## Project Workflow
-
-```
-Business Problem
-
-↓
-
-Exploratory Data Analysis
-
-↓
-
-Business Hypotheses
-
-↓
-
-SQL Validation
-
-↓
-
-Business Insights
-
-↓
-
-Strategic Recommendations
-
-↓
-
-Estimated Financial Impact
-```
-
----
-
-## Analysis Performed
-
-### Revenue Diagnosis
-
-- Revenue decomposition
-- Lost revenue estimation
-- ADR analysis
-- Average stay
-
-### Cancellation Analysis
-
-- Lead time
-- Booking channels
-- Deposit policy
-- Customer profile
-
-### Customer Analysis
-
-- Repeat customers
-- Special requests
-- Customer engagement
-
-### Commercial Analysis
-
-- Room categories
-- Seasonality
-- Direct vs OTA channels
 
 ---
 
 ## Key Findings
 
-### Revenue Leakage
+**Revenue Leakage:** 27.82% cancellation → R$5.84M lost. Reservations 90+ days in advance: 40% of volume, 64% of lost revenue.
 
-- 27.82% cancellation rate
-- R$3.25M in lost revenue
+**Direct Channel:** Lowest cancellation (13.48%), ADR R$111.67, no OTA commission. Highest net revenue per reservation.
 
-### Long Lead Time
+**Non-refundable deposit anomaly:** 96% cancellation — concentrated in Portuguese groups. Euro/BRL asymmetry renders deposit irrelevant as retention barrier.
 
-Reservations made over 90 days in advance represent the majority of lost revenue.
+**Repeat Customers:** 4.4% of base, cancel 4.5× less. Weekend repeats reach ADR R$155–222 with ~6-night stays.
 
-### Direct Channel
-
-Lowest cancellation rate and highest estimated net profitability.
-
-### Repeat Customers
-
-Only 4.4% of customers are repeat guests, yet they cancel 4.5× less than first-time guests.
-
-### Premium Rooms
-
-Premium rooms generate substantially higher ADR while representing a very small share of reservations.
-
-### Customer Engagement
-
-Each additional special request correlates with higher ADR and longer stays.
+**Customer Engagement:** Each additional special request = +R$20–30 ADR, +0.3 nights, independent of seasonality. HB + 3 requests: R$168 ADR, 9% cancellation. FB + 3 requests: 0% cancellation.
 
 ---
 
 ## Business Recommendations
 
-| Initiative | Estimated Impact |
-|------------|----------------:|
-| Deposit policy | R$200K |
-| Pre-arrival upsell | R$180K |
-| CRM retention campaigns | R$100K |
-| Direct booking strategy | R$150K |
-| Low season packages | R$100K |
-| Loyalty program | R$80K |
-| Corporate agreements | R$60K |
+| # | Initiative | Est. Impact | Effort | Timeline |
+|---|-----------|------------:|--------|----------|
+| 1 | Deposit policy >30 days (excl. Groups) | ~R$380K | Low | Immediate |
+| 2 | Pre-arrival upsell (room + meal + engagement) | ~R$180K | Low | Immediate |
+| | **Immediate subtotal** | **~R$560K (24%)** | | |
+| 3 | Demand management (retention + low season) | ~R$200K | Medium | 1–2 months |
+| 4 | Direct channel migration | ~R$150K | Medium | 3–6 months |
+| | **Short/mid-term subtotal** | **~R$910K (39%)** | | |
+| 5 | Retention & loyalty (loyalty + corporate) | ~R$140K | Med/High | 3–12 months |
+| | **Total** | **~R$1.05M (45%)** | | |
 
-Estimated opportunity:
+Reaching 100% of the target requires levers beyond the dataset: dynamic pricing, new markets, or capacity expansion.
 
-**≈ R$870K**
+---
 
-Equivalent to approximately **87%** of the target revenue increase.
+## Methodology Note
+
+**Revenue bug (fixed):** Original dataset uses comma as decimal separator in `receita_por_noite`. Earlier sessions underestimated revenue ~2.34×. Fix: `str.replace(',', '.')` before float cast. See `config.py`.
 
 ---
 
 ## Future Improvements
 
-Potential future developments include:
-
-- Dynamic pricing simulation
-- Cancellation prediction model
-- Customer Lifetime Value
-- Recommendation engine
-- Interactive dashboard
-- Revenue forecasting
+- Cancellation prediction model · Dynamic pricing simulation · Customer Lifetime Value · Interactive dashboard
 
 ---
 
 ## Author
 
-**Dante Costa**
-
-Senior Data Analyst
-
-Business Analytics • SQL • Data Strategy • Business Architecture
+**Dante Costa** — Senior Data Analyst
+Business Analytics · SQL · Data Strategy · Business Architecture
